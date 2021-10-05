@@ -59,15 +59,18 @@ contract Custodier {
     }
     
     // used as a fallback for contributors in case the creator doesn't payout or loses wallet
-    // Creator will give an amount of days to represent the length of the custodier 
+    // Creator will give an amount of days to represent the length of the custodiership 
     // If time runs out, any contributor can request a timeout that refunds all contributors
     function claimTimeout() public {
         require((block.timestamp > expirationDate && contributed(msg.sender)) || msg.sender == creator);
-        uint payout = address(this).balance / contributors.length;
-        for (uint i = 0; i < contributors.length; i++) { // payout to first 2 for now
-            contributors[i].transfer(payout);
+        if(contributors.length > 0) {
+            uint payout = address(this).balance / contributors.length;
+            for (uint i = 0; i < contributors.length; i++) {
+                contributors[i].transfer(payout);
+            }
+            paidOut = true;
         }
-        paidOut = true;
+        // selfdestruct even if there are no contributors(creator ends contract early)
         selfdestruct(address(0x0)); // delete the contract
     }
 

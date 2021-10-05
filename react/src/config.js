@@ -1,6 +1,6 @@
 
 // change this address each time CustodierFactory needs to be redeployed
-export const CUSTODIER_FACTORY_ADDRESS = "0xb76934D89F609bDBcA53b200F5Ca639B3E0DDB86"
+export const CUSTODIER_FACTORY_ADDRESS = "0xCd8699E52100489aF7eEc1bDf12FaedB1D56Ea21"
 
 // change this every time CustodierFactory.sol is changed
 export const CUSTODIER_FACTORY_ABI = [

@@ -25,6 +25,7 @@ class CreateCustodier extends Component {
                 }}
                 type="number"
                 step="0.000001"
+                min="0.000001"
                 className="form-control mt-2"
                 placeholder="Contribution Amount"
                 defaultValue=""
@@ -38,7 +39,8 @@ class CreateCustodier extends Component {
                   this.daysUntilExpiration = input
                 }}
                 type="number"
-                step=".001"
+                step=".0001"
+                min=".0001"
                 className="form-control mt-2"
                 placeholder="Days Until Expiration"
                 defaultValue=""

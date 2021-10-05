@@ -14,6 +14,9 @@ contract CustodierFactory {
     }
 
     function createCustodier(string memory _name, uint _contribAmount, uint _millisecondsUntilExpiration) public returns(address) {
+        require(_contribAmount > 0);
+        require(_millisecondsUntilExpiration > 0);
+        require(keccak256(abi.encodePacked(_name)) != keccak256(abi.encodePacked("")));
         custodierCount++;
         Custodier newCustodier = new Custodier(_name, _contribAmount, msg.sender, _millisecondsUntilExpiration);
         custodiers[custodierCount] = address(newCustodier);
