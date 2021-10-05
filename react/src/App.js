@@ -68,12 +68,6 @@ class App extends Component {
         const custodierCount = await custodierFactory.methods.custodierCount().call()
         this.setState({ custodierCount })
                 
-        // this doesn't scale. The idea is to only display contracts that users have created or
-        // contributed to. I think that will require a database to store contract address and 
-        // contributors.
-        // implement search function for custodiers
-        // if the user contributes to the custodier, add it to state to display back to them.
-        // I think this will require users to search their custodiers every time they visit the site.
         for (var i = 1; i <= custodierCount; i++) {
           const address = await custodierFactory.methods.custodiers(i).call({gas: 4000000})
           try {

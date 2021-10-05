@@ -20,7 +20,6 @@ class SearchCustodier extends Component {
                         <button type="submit" className="btn btn-dark">Search</button>
                     </div>
                 </form>
-                {/* { this.displaySearchedCustodier } */}
            </div>
         )
     }
